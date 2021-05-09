@@ -17,7 +17,9 @@
 
 ### Association
 
-- has_many :tweet
+- has_many :items
+- has_many :purchases
+- has_many :comments
 
 
 ## items テーブル
@@ -35,6 +37,11 @@
 | prefectures_id               | integer        | null: false                    |
 | estimated_shipping_date_id   | integer        | null: false                    |
 
+### Association
+
+- belongs_to :user
+- has_one :purchase
+- has_many :comments
 
 ## purchases テーブル
 
@@ -47,6 +54,12 @@
 | user                         | references     | 
 | item                         | references     | 
 
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping_address
+
 
 ## shipping address テーブル
 | postal_code                  | integer        | null: false |
@@ -58,6 +71,9 @@
 | user                         | references     |
 | purchase                     | references     |  
 
+### Association
+
+- belongs_to
 
 ## comments テーブル
 
@@ -66,3 +82,9 @@
 | text         | text       | null: false |
 | user         | references |
 | item         | references |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
