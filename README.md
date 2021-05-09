@@ -1,24 +1,53 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+| email        | string | null: false |
+| password     | string | null: false |
+| name         | string | null: false |
+| prefectures  | string | null: false |
 
-* Ruby version
+## selling pages テーブル
 
-* System dependencies
+| Column                       | Type           | Options     |
+| ---------------------------- | -------------- | ----------- |
+| title                        | string         | null: false |
+| image                        | ActiveStorage  | 
+| price                        | integer        | null: false |
+| delivery_charged             | string         | null: false |
+| text                         | text           | null: false |
+| seller_user                  | reference      | 
+| category                     | string         | null: false |
+| product_condition            | string         | null: false |
+| prefectures                  | reference      | 
+| estimated_shipping_date      | string         | null: false |
 
-* Configuration
 
-* Database creation
+## purchase pages テーブル
 
-* Database initialization
+| Column                       | Type           | Options     |
+| ---------------------------- | -------------- | ----------- |
+| title                        | reference      | 
+| image                        | reference      | 
+| price                        | reference      | 
+| delivery_charged             | reference      | 
+| credit_card_number           | integer        | null: false |
+| credit_card_expiration_date  | integer        | null: false |
+| credit_card_security_code    | integer        | null: false |
+| postal_code                  | integer        | null: false |
+| prefectures                  | string         | null: false |
+| municipality                 | string         | null: false |
+| address(banchi)              | string         | null: false |
+| building_name                | string         | null: false |
+| phone_number                 | string         | null: false |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## comments テーブル
 
-* Deployment instructions
-
-* ...
+| Column       | Type       | Options     |
+| ------------ | ---------- | ----------- |
+| text         | text       | null: false |
+| user         | references |
+| selling_page | references |
