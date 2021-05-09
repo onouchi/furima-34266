@@ -9,7 +9,7 @@
 | name         | string | null: false |
 | prefectures  | string | null: false |
 
-## selling pages テーブル
+## items テーブル
 
 | Column                       | Type           | Options     |
 | ---------------------------- | -------------- | ----------- |
@@ -25,7 +25,7 @@
 | estimated_shipping_date      | string         | null: false |
 
 
-## purchase pages テーブル
+## purchases テーブル
 
 | Column                       | Type           | Options     |
 | ---------------------------- | -------------- | ----------- |
@@ -50,4 +50,4 @@
 | ------------ | ---------- | ----------- |
 | text         | text       | null: false |
 | user         | references |
-| selling_page | references |
+| item         | references |
