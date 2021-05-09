@@ -2,46 +2,61 @@
 
 ## users テーブル
 
-| Column       | Type   | Options     |
-| ------------ | ------ | ----------- |
-| email        | string | null: false |
-| password     | string | null: false |
-| name         | string | null: false |
-| prefectures  | string | null: false |
+| Column                | Type    | Options                  |
+| --------------------- | ------- | ------------------------ |
+| nickname              | string  | null: false              |
+| email                 | string  | null: false, unique: true|
+| encrypted_password    | string  | null: false              |
+| last_name             | string  | null: false              |
+| first_name            | string  | null: false              |
+| last_name_katakana    | string  | null: false              |
+| first_name_katakana   | string  | null: false              |
+| birth_year            | integer | null: false              |
+| birth_month           | integer | null: false              |
+| birth_day             | integer | null: false              |
+
+### Association
+
+- has_many :tweet
+
 
 ## items テーブル
 
-| Column                       | Type           | Options     |
-| ---------------------------- | -------------- | ----------- |
-| title                        | string         | null: false |
+| Column                       | Type           | Options                        |
+| ---------------------------- | -------------- | ------------------------------ |
+| title                        | string         | null: false                    |
 | image                        | ActiveStorage  | 
-| price                        | integer        | null: false |
-| delivery_charged             | string         | null: false |
-| text                         | text           | null: false |
-| seller_user                  | reference      | 
-| category                     | string         | null: false |
-| product_condition            | string         | null: false |
-| prefectures                  | reference      | 
-| estimated_shipping_date      | string         | null: false |
+| price                        | integer        | null: false                    |
+| delivery_charged_id          | integer        | null: false                    |
+| text                         | text           | null: false                    |
+| user                         | references     | 
+| category_id                  | integer        | null: false, foreign_key: true |
+| product_condition_id         | integer        | null: false                    |
+| prefectures_id               | integer        | null: false                    |
+| estimated_shipping_date_id   | integer        | null: false                    |
 
 
 ## purchases テーブル
 
 | Column                       | Type           | Options     |
 | ---------------------------- | -------------- | ----------- |
-| title                        | reference      | 
-| image                        | reference      | 
-| price                        | reference      | 
-| delivery_charged             | reference      | 
-| credit_card_number           | integer        | null: false |
-| credit_card_expiration_date  | integer        | null: false |
-| credit_card_security_code    | integer        | null: false |
+| title                        | references     | 
+| image                        | references     | 
+| price                        | references     | 
+| delivery_charged             | references     | 
+| user                         | references     | 
+| item                         | references     | 
+
+
+## shipping address テーブル
 | postal_code                  | integer        | null: false |
 | prefectures                  | string         | null: false |
 | municipality                 | string         | null: false |
 | address(banchi)              | string         | null: false |
 | building_name                | string         | null: false |
 | phone_number                 | string         | null: false |
+| user                         | references     |
+| purchase                     | references     |  
 
 
 ## comments テーブル
