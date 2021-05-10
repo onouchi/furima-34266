@@ -11,9 +11,8 @@
 | first_name            | string  | null: false              |
 | last_name_katakana    | string  | null: false              |
 | first_name_katakana   | string  | null: false              |
-| birth_year            | integer | null: false              |
-| birth_month           | integer | null: false              |
-| birth_day             | integer | null: false              |
+| birth                 | date    | null: false              |
+
 
 ### Association
 
@@ -31,10 +30,10 @@
 | price                        | integer        | null: false                    |
 | delivery_charged_id          | integer        | null: false                    |
 | text                         | text           | null: false                    |
-| user                         | references     | 
-| category_id                  | integer        | null: false, foreign_key: true |
+| user                         | references     | foreign_key: true              |
+| category_id                  | integer        | null: false                    |
 | product_condition_id         | integer        | null: false                    |
-| prefectures_id               | integer        | null: false                    |
+| prefecture_id                | integer        | null: false                    |
 | estimated_shipping_date_id   | integer        | null: false                    |
 
 ### Association
@@ -45,14 +44,10 @@
 
 ## purchases テーブル
 
-| Column                       | Type           | Options     |
-| ---------------------------- | -------------- | ----------- |
-| title                        | references     | 
-| image                        | references     | 
-| price                        | references     | 
-| delivery_charged             | references     | 
-| user                         | references     | 
-| item                         | references     | 
+| Column                       | Type           | Options           |
+| ---------------------------- | -------------- | ----------------- |
+| user                         | references     | foreign_key: true |
+| item                         | references     | foreign_key: true |
 
 ### Association
 
@@ -62,25 +57,24 @@
 
 
 ## shipping address テーブル
-| postal_code                  | integer        | null: false |
-| prefectures                  | string         | null: false |
-| municipality                 | string         | null: false |
-| address(banchi)              | string         | null: false |
-| building_name                | string         | null: false |
-| phone_number                 | string         | null: false |
-| user                         | references     |
+| postal_code                  | string         | null: false       |
+| prefectures                  | integer        | null: false       |
+| municipality                 | string         | null: false       |
+| address(banchi)              | string         | null: false       |
+| building_name                | string         | 
+| phone_number                 | string         | null: false       |
 | purchase                     | references     |  
 
 ### Association
 
-- belongs_to
+- belongs_to :purchase
 
 ## comments テーブル
 
-| Column       | Type       | Options     |
-| ------------ | ---------- | ----------- |
-| text         | text       | null: false |
-| user         | references |
+| Column       | Type       | Options           |
+| ------------ | ---------- | ----------------- |
+| text         | text       | null: false       |
+| user         | references | 
 | item         | references |
 
 ### Association
