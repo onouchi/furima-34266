@@ -26,7 +26,6 @@
 | Column                       | Type           | Options                        |
 | ---------------------------- | -------------- | ------------------------------ |
 | title                        | string         | null: false                    |
-| image                        | ActiveStorage  | 
 | price                        | integer        | null: false                    |
 | delivery_charged_id          | integer        | null: false                    |
 | text                         | text           | null: false                    |
@@ -58,12 +57,12 @@
 
 ## shipping address テーブル
 | postal_code                  | string         | null: false       |
-| prefectures                  | integer        | null: false       |
+| prefectures_id               | integer        | null: false       |
 | municipality                 | string         | null: false       |
 | address(banchi)              | string         | null: false       |
 | building_name                | string         | 
 | phone_number                 | string         | null: false       |
-| purchase                     | references     |  
+| purchase                     | references     | foreign_key: true |
 
 ### Association
 
