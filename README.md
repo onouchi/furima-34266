@@ -56,6 +56,8 @@
 
 
 ## shipping address テーブル
+| Column                       | Type           | Options           |
+| ---------------------------- | -------------- | ----------------- |
 | postal_code                  | string         | null: false       |
 | prefectures_id               | integer        | null: false       |
 | municipality                 | string         | null: false       |
