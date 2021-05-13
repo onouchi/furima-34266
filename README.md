@@ -75,8 +75,8 @@
 | Column       | Type       | Options           |
 | ------------ | ---------- | ----------------- |
 | text         | text       | null: false       |
-| user         | references | 
-| item         | references |
+| user         | references | foreign_key: true |
+| item         | references | foreign_key: true | 
 
 ### Association
 
