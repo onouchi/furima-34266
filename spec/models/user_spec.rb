@@ -28,11 +28,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it 'passwordが6文字以下では登録できない' do
-        @user.password = 'aaa000'
-        @user.password_confirmation = 'aaa000'
+      it 'passwordが5文字以下では登録できない' do
+        @user.password = 'aaa00'
+        @user.password_confirmation = 'aaa00'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 7 characters)")
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it '重複したemailが存在する場合登録できない' do
         @user.save

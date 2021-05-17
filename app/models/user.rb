@@ -14,7 +14,6 @@ class User < ApplicationRecord
   validates :last_name_katakana , presence: true , format:{with:/\A[ァ-ヶー－]+\z/}
   validates :first_name_katakana, presence: true , format:{with:/\A[ァ-ヶー－]+\z/}
   validates :birth , presence: true
-  validates :password , presence: true , length: { minimum: 7 }
 
 
   # has_many :items
