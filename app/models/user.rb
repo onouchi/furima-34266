@@ -13,13 +13,14 @@ class User < ApplicationRecord
           validates :first_name , format:{with:/\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/}
           validates :last_name_katakana , format:{with:/\A[ァ-ヶー－]+\z/}
           validates :first_name_katakana , format:{with:/\A[ァ-ヶー－]+\z/}
+          validates :password,  format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/}
+
           validates :birth 
+        end
 
 
   # has_many :items
   # has_may  :purchases
   # has_many :comments
 
-  
-  validates :nickname, presence: true
 end
