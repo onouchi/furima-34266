@@ -8,7 +8,7 @@
     <%= form_with model: @item, local: true do |f| %>
 
     
-    <% render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
     
 
     <%# 出品画像 %>
@@ -22,7 +22,7 @@
           クリックしてファイルをアップロード
         </p>
         <%= f.file_field :image, id:"item-image" %>
-        <%# <%= image_tag message.image.variant(resize: '500x500'), class: 'message-image' if message.image.attached? %> %>
+        
       </div>
     </div>
     <%# /出品画像 %>
