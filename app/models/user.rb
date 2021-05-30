@@ -18,8 +18,10 @@ class User < ApplicationRecord
           validates :birth 
         end
 
+        
 
-  # has_many :items
+
+  has_many :items
   # has_may  :purchases
   # has_many :comments
 
