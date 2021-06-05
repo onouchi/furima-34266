@@ -128,7 +128,7 @@
     <ul class='item-lists'>
     <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -139,7 +139,7 @@
           </div>
           <%# end %>
           <%# //商品が売れていればsold outを表示しましょう %>
-          
+
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -156,10 +156,8 @@
         <% end %>
       </li>
     <% end %>
-      
 
-      
-      
+    
       <% if @items.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
