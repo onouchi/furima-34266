@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def show 
+    
   end
   
   def edit 
@@ -46,9 +47,9 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :text, :price, :delivery_charged_id, :category_id, :product_condition_id,
-                                 :prefecture_id, :estimated_shipping_date_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :title, :text, :price, :delivery_charged_id, :category_id, :product_condition_id,:prefecture_id, :estimated_shipping_date_id, :purchase_id).merge(user_id: current_user.id)
   end
+
 
   def move_to_index
     unless Item.find(params[:id]).user.id == current_user.id
