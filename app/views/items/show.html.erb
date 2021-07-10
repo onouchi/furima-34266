@@ -37,10 +37,13 @@
       
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
+      <% end %>
+      
+      <% if @item.purchase.present? %> 
       <% else %>
         <%= link_to "購入画面に進む",  item_purchases_path(@item.id) ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
       <% end %>
+    <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
 
 
