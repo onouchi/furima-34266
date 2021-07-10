@@ -12,8 +12,7 @@ FactoryBot.define do
     item_id          {1}
     
 
-    # association :user
-    # association :item
+    
   end
 end
 

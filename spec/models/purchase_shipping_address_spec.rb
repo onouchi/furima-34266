@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe PurchaseShippingAddress, type: :model do
   before do
     @purchaes_shipping_address = FactoryBot.build(:purchase_shipping_address)
-    # @user_id = FactoryBot.create(:user)
-    # @item = FactoryBot.build(:item)
-    # @item.image = fixture_file_upload('app/assets/images/test_image.jpeg')
-    # @item.save
-    # @purchase_purchaser = FactoryBot.build(:purchase_purchaser, user_id: @user.id, item_id: @item.id)
+    
   end
   describe '商品購入' do
     context '内容に問題ない場合' do
