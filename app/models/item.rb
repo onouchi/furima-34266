@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :product_condition
   belongs_to_active_hash :estimated_shipping_date
   has_one_attached :image
+  has_one :purchase
 
   with_options presence: true do
     validates :image
@@ -24,4 +25,5 @@ class Item < ApplicationRecord
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
                       format: { with: /\A[0-9]+\z/ }
   end
+  
 end
