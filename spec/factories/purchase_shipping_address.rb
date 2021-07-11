@@ -8,11 +8,11 @@ FactoryBot.define do
     house_number     {"number_2"}
     building_name    {"building_2"}
     phone_number     {"00312345678"}
-    user_id          {1}
-    item_id          {1}
+   
     
-
+    association :item
+    association :user
+  end  
     
-  end
 end
 

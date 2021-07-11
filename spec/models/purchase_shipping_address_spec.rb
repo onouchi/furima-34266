@@ -2,14 +2,21 @@ require 'rails_helper'
 
 RSpec.describe PurchaseShippingAddress, type: :model do
   before do
-    @purchaes_shipping_address = FactoryBot.build(:purchase_shipping_address)
-    
+    item = FactoryBot.create(:item)
+    user = FactoryBot.create(:user)
+    @purchaes_shipping_address = FactoryBot.build(:purchase_shipping_address, item_id: item.id, user_id: user.id)
+    sleep 1
   end
   describe '商品購入' do
     context '内容に問題ない場合' do
       it '全ての値が正しく入力されていれば購入できること' do
         expect(@purchaes_shipping_address).to be_valid
       end
+      it '建物名は空でも購入できる' do
+        @purchaes_shipping_address.building_name = ''
+        expect(@purchaes_shipping_address).to be_valid
+      end
+
     end
 
     context '内容に問題がある場合' do
@@ -60,6 +67,24 @@ RSpec.describe PurchaseShippingAddress, type: :model do
         @purchaes_shipping_address.phone_number = '123456789123'
         @purchaes_shipping_address.valid?
         expect(@purchaes_shipping_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      
+      it '電話番号が英数字混合だと決済できないこと' do
+        @purchaes_shipping_address.phone_number = 'aaaaa567891'
+        @purchaes_shipping_address.valid?
+        expect(@purchaes_shipping_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      
+      it '紐づくユーザーが存在しないと保存できないこと' do
+        @purchaes_shipping_address.user_id = ''
+        @purchaes_shipping_address.valid?
+        expect(@purchaes_shipping_address.errors.full_messages).to include("User can't be blank")
+      end
+      
+      it '紐づくアイテムが存在しないと保存できないこと' do
+        @purchaes_shipping_address.item_id = ''
+        @purchaes_shipping_address.valid?
+        expect(@purchaes_shipping_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
