@@ -1,17 +1,15 @@
-<%# cssは商品出品のものを併用しています。
-app/assets/stylesheets/items/new.css %>
-
 <div class="items-sell-contents">
   <header class="items-sell-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with(model: @item, local: true) do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    
     <%= render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -85,7 +83,6 @@ app/assets/stylesheets/items/new.css %>
         </div>
         <%= f.collection_select(:estimated_shipping_date_id, EstimatedShippingDate.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
-      </div>
     </div>
     <%# /配送について %>
 
@@ -144,7 +141,7 @@ app/assets/stylesheets/items/new.css %>
       
       <%= f.submit "変更する" ,class:"sell-btn" %>
       
-      <%=link_to 'もどる', "#", class:"back-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
